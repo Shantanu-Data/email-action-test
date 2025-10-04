@@ -1,0 +1,31 @@
+name: Cache Prime
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  prime:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Restore npm cache
+        id: cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: cache-810982b
+
+      - name: prime-cache-810982b
+        run: echo "cache-hit=${{ steps.cache.outputs.cache-hit }}"
+
+      - name: Install deps
+        run: npm ci
