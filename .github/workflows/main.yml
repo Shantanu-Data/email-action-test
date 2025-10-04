@@ -11,15 +11,5 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
-
       - name: 23f3002617@ds.study.iitm.ac.in
-        run: echo "Hello from GitHub Actions!"
-
-
-
-
-
-
-
-
-
+        run: echo "Hello, world!"
