@@ -27,5 +27,6 @@ jobs:
       - name: prime-cache-810982b
         run: echo "cache-hit=${{ steps.cache.outputs.cache-hit }}"
 
+      # Use npm install so it works without a lockfile
       - name: Install deps
-        run: npm ci
+        run: npm install
