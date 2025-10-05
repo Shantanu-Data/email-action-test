@@ -1,9 +1,9 @@
-name: Cache Prime
+name: cache-prime
 
 on:
+  workflow_dispatch:
   push:
     branches: [ "main" ]
-  workflow_dispatch:
 
 jobs:
   prime:
@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Restore npm cache
+      - name: Cache npm dir
         id: cache
         uses: actions/cache@v4
         with:
@@ -25,8 +25,8 @@ jobs:
           key: cache-810982b
 
       - name: prime-cache-810982b
-        run: echo "cache-hit=${{ steps.cache.outputs.cache-hit }}"
+        run: echo "cache_hit=${{ steps.cache.outputs.cache-hit }}"
 
-      # Use npm install so it works without a lockfile
       - name: Install deps
         run: npm install
+
